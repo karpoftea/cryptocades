@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>cryptocades</artifactId>
+		<groupId>cryptocades</groupId>
+		<version>1.0</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>signature</artifactId>
+
+	<repositories>
+		<repository>
+			<id>Thirdparty</id>
+			<name>3rd Party Repository</name>
+			<url>http://maven.osmp.ru/nexus/content/repositories/thirdparty</url>
+		</repository>
+
+		<repository>
+			<id>Maven Central</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>jcp</groupId>
+			<artifactId>cryptopro.cades</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- for ru.CryptoPro.CAdES.examples package-->
+		<dependency>
+			<groupId>jcp</groupId>
+			<artifactId>cryptopro.jcp.jcp</artifactId>
+			<version>1.0.53</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.1.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

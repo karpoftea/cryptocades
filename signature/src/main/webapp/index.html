@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digital signature web test stand</title>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<script type="text/javascript" src="stand.js"></script>
+</head>
+<body>
+
+<object id="cadesplugin" type="application/x-cades" class="hidden"></object>
+
+<fieldset>
+	<legend>Sign</legend>
+	<p class="hint">This form signs given data using selected certificate.<br />Select certificate, enter raw or Base64 data and TSA URL, press "Sign" or "Sign and verify".</p>
+	<form onsubmit="return false;">
+		<label>Certificate</label><br />
+		<select id="certificates1" name="certificate">
+			<option selected value="0">Select...</option>
+		</select>
+		<br />
+
+		<label>Raw data</label><i class="hint">text</i><br />
+		<textarea name="data" onkeyup="Util.toBase64(this.form);"></textarea>
+		<br />
+
+		<label>Data</label><i class="hint">Base64</i><input for="base64Data" type="file" /><button class="load" to="base64Data">Load</button><input type="text" class="load" value="C:/result.txt" /><br />
+		<textarea name="base64Data"></textarea>
+		<br />
+
+		<label>TSA</label><i class="hint">URL</i><br />
+		<!--<input name="tsaUrl" type="text" value="http://193.232.60.72:8777/tsp">-->
+		<select name="tsaUrl">
+			<option selected value="http://193.232.60.72:8777/tsp">http://193.232.60.72:8777/tsp</option>
+			<option value="http://www.cryptopro.ru/tsp/tsp.srf">http://www.cryptopro.ru/tsp/tsp.srf</option>
+		</select>
+		<br />
+
+		<button onclick="if (this.form.certificate.value == 0) alert('Select certificate first.'); else View.sign(this.form);">Sign &crarr;</button>
+		<button onclick="if (this.form.certificate.value == 0) alert('Select certificate first.'); else View.signAndVerify(this.form);">Sign and verify &crarr;</button>
+
+		<hr />
+
+		<label class="result">Result &mdash; signature</label><i class="hint">Base64</i><button class="save" from="signature">Save</button><input type="text" class="save" value="C:/result.txt" /><br />
+		<textarea name="signature" disabled></textarea>
+	</form>
+</fieldset>
+
+<fieldset>
+	<legend>Verify signature</legend>
+	<p class="hint">This form verifies given signature for given data.<br />Enter original data and signature, press "Verify".</p>
+	<form onsubmit="return false;">
+		<label>Original data</label><i class="hint">Base64</i><input for="document" type="file" /><button class="load" to="document">Load</button><input type="text" class="load" value="C:/result.txt" /><br />
+		<textarea name="document"></textarea>
+		<br />
+
+		<label>Signature</label><i class="hint">Base64</i><input for="signature" type="file" /><button class="load" to="signature">Load</button><input type="text" class="load" value="C:/result.txt" /><br />
+		<textarea name="signature"></textarea>
+		<br />
+
+		<button onclick="View.verify(this.form);">Verify</button>
+	</form>
+</fieldset>
+
+<fieldset>
+	<legend>Co-sign</legend>
+	<p class="hint">This form co-signs given data with given signature using selected certificate.<br />Select certificate, enter original data, original signature and TSA URL, press "Co-sign" or "Co-sign and verify".</p>
+	<form onsubmit="return false;">
+		<label>Certificate</label><br />
+		<select id="certificates2" name="certificate">
+			<option selected value="0">Select...</option>
+		</select>
+		<br />
+
+		<label>Original data</label><i class="hint">Base64</i><input for="base64Data" type="file" /><button class="load" to="base64Data">Load</button><input type="text" class="load" value="C:/result.txt" /><br />
+		<textarea name="base64Data"></textarea>
+		<br />
+
+		<label>Original signature</label><i class="hint">Base64</i><input for="origSignature" type="file" /><button class="load" to="origSignature">Load</button><input type="text" class="load" value="C:/result.txt" /><br />
+		<textarea name="origSignature"></textarea><br />
+
+		<label>TSA</label><i class="hint">URL</i><br />
+		<!--<input name="tsaUrl" type="text" value="http://193.232.60.72:8777/tsp">-->
+		<select name="tsaUrl">
+			<option selected value="http://193.232.60.72:8777/tsp">http://193.232.60.72:8777/tsp</option>
+			<option value="http://www.cryptopro.ru/tsp/tsp.srf">http://www.cryptopro.ru/tsp/tsp.srf</option>
+		</select>
+		<br />
+
+		<button onclick="if (this.form.certificate.value == 0) alert('Select certificate first.'); else View.coSign(this.form);">Co-sign &crarr;</button>
+		<button onclick="if (this.form.certificate.value == 0) alert('Select certificate first.'); else View.coSignAndVerify(this.form);">Co-sign and verify &crarr;</button>
+
+		<hr />
+
+		<label class="result">Result &mdash; signature</label><i class="hint">Base64</i><button class="save" from="signature">Save</button><input type="text" class="save" value="C:/result.txt" /><br />
+		<textarea name="signature" disabled></textarea>
+	</form>
+</fieldset>
+
+<fieldset>
+	<legend>Show signers</legend>
+	<p class="hint">This form shows available information about signers.<br />Enter original data (this is required by API), signature and press "Show signers".</p>
+	<form onsubmit="return false;">
+		<label>Original data</label><i class="hint">Base64</i><input for="document" type="file" /><button class="load" to="document">Load</button><input type="text" class="load" value="C:/result.txt" /><br />
+		<textarea name="document"></textarea>
+		<br />
+
+		<label>Signature</label><i class="hint">Base64</i><input for="signature" type="file" /><button class="load" to="signature">Load</button><input type="text" class="load" value="C:/result.txt" /><br />
+		<textarea name="signature"></textarea>
+		<br />
+
+		<button onclick="View.showSigners(this.form);">Show signers</button>
+	</form>
+</fieldset>
+
+<script type="text/javascript">
+	Util.fillCertificatesCombo();
+	Util.bindFileInputs();
+	Util.bindFileOutputs();
+</script>
+
+</body>
+</html>

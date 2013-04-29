@@ -1,0 +1,23 @@
+body {margin: 0; padding: 10px 10px 0 10px; font: 14px Tahoma, Arial, Helvetica, sans-serif;}
+form {margin: 0;}
+fieldset {margin: 0 0 25px 0; padding: 20px 10px 0 10px; border: 1px solid #dddddd;}
+legend {padding: 0 10px 0 10px; font-size: 22px;}
+label {display: inline-block; padding: 5px 10px 5px 8px; background: #c2e04c;}
+label.result {background: #abcdef;}
+textarea {width: 1000px; height: 100px; margin: 0; margin: 0 0 10px 0;}
+input {width: 500px; padding: 5px 2px 5px 2px;}
+select {width: 1006px; padding: 4px 0 4px 2px;}
+textarea {padding: 2px;}
+textarea, input, select {margin: 0 5px 10px 0; border: 1px solid #abadb3; font: 14px Tahoma, Arial, Helvetica, sans-serif;}
+button {width: 200px; height: 50px; margin: 0 5px 10px 0; font: 18px Tahoma, Arial, Helvetica, sans-serif;}
+button.zero {width: auto; height: auto; margin: 0 0 12px 0; padding: 1px 4px 3px 4px; vertical-align: bottom; font-size: 11px}
+hr {width: 1006px; margin: 10px 0 20px 0; padding: 0; border: 0; border-top: 1px dotted #abadb3; text-align: left;}
+
+.hidden {visibility: hidden; width: 0; height: 0;}
+.hint {color: #abadb3;}
+i.hint {display: inline-block; padding: 5px 10px 5px 8px; color: #abadb3;}
+p.hint {margin: 0 0 10px 0;}
+
+input[type=file] {border: 0; margin: 0; padding-bottom: 2px;}
+button.load, button.save {margin: 0; padding: 2px 5px; width: auto; height: auto; font: inherit;}
+iinput.load, nput.save {margin: 0; padding: 2px 4px;}
