@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>jcp</groupId>
 			<artifactId>cryptopro.cades</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.55</version>
 		</dependency>
 
 		<!-- for ru.CryptoPro.CAdES.examples package-->
