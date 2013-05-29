@@ -15,6 +15,10 @@ public final class Constants {
 	public static final char[] TEST2012_KEY_PASS = "qwerty".toCharArray();
 	public static final X509Certificate TEST2012_CERT = generate(FileUtil.resourceBytes(Constants.class, "Test_2012.cer"));
 
+	public static final String VOROBYANINOV_KEY_ALIAS = "vorobyaninov";
+	public static final char[] VOROBYANINOV_KEY_PASS = "qwerty".toCharArray();
+	public static final X509Certificate VOROBYANINOV_CERT = generate(FileUtil.resourceBytes(Constants.class, "Vorobyaninov.cer"));
+
 	public static final String TEST_QIWI_2012_KEY_ALIAS = "Test_Qiwi_2012";
 	public static final char[] TEST_QIWI_2012_KEY_PASS = "qwerty".toCharArray();
 	public static final X509Certificate TEST_QIWI_2012_CERT = generate(FileUtil.resourceBytes(Constants.class, "Test_Qiwi_2012.cer"));
